@@ -1,7 +1,7 @@
 export default async function handler(request, response) {
   const apiKey = process.env.KOCCA_FINANCE_KEY;
   const { pageNo = 1 } = request.query;
-  const url = `https://kocca.kr/api/finance/List.do?serviceKey=${apiKey}&pageNo=${pageNo}&numOfRows=10&viewStartDt=20240101`;
+  const url = `https://kocca.kr/api/finance/List.do?serviceKey=${apiKey}&pageNo=${pageNo}&numOfRows=50&viewStartDt=20240101`;
 
   try {
     const fetchResponse = await fetch(url);
