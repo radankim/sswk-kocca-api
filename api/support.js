@@ -1,6 +1,6 @@
 export default async function handler(request, response) {
   // 캐시 설정: 3600초(1시간) 동안 저장
-  response.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
+  response.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
 
   const apiKey = process.env.KOCCA_SUPPORT_KEY;
   const { pageNo = 1 } = request.query;
