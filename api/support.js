@@ -1,7 +1,11 @@
 export default async function handler(request, response) {
+  // 캐시 설정: 3600초(1시간) 동안 저장
+  response.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
+
   const apiKey = process.env.KOCCA_SUPPORT_KEY;
   const { pageNo = 1 } = request.query;
-  const url = `https://kocca.kr/api/pims/List.do?serviceKey=${apiKey}&pageNo=${pageNo}&numOfRows=30&viewStartDt=20240101`;
+  // 50개 유지
+  const url = `https://kocca.kr/api/pims/List.do?serviceKey=${apiKey}&pageNo=${pageNo}&numOfRows=50&viewStartDt=20240101`;
 
   try {
     const fetchResponse = await fetch(url);
